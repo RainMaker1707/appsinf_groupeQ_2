@@ -1,0 +1,84 @@
+p{
+    margin: 0;
+    padding: 0;
+}
+
+#reports{
+    height: 100%;
+    padding-top: 50px;
+}
+
+.report-container{
+    display: flex;
+    width: 80%;
+    height: 30vh;
+    min-height: 150px;
+    color: white;
+    margin-bottom: 30px;
+    background-color: rgba(135,206,250, 0.2);
+    border: 3px solid #244478;
+    border-radius: 30px;
+}
+
+.container-left{
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    text-align: center;
+}
+
+.container-right{
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    text-align: center;
+    padding-right: 10%;
+}
+
+.image{
+    max-width: 50%;
+    max-height: 60%;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.author{
+    padding-bottom: 10px;
+}
+
+.description{
+    overflow: scroll;
+    max-height: 65%;
+}
+
+.date{
+
+}
+
+.localisation{
+
+}
+
+@media(max-width: 410px){
+    .report-container{
+        display: block;
+        min-height: 300px;
+        min-width: 90%;
+    }
+
+    .container-left{
+        min-width: 100%;
+        height: 50%;
+        text-align: center;
+    }
+
+    .container-right{
+        min-width: 100%;
+        height: 50%;
+        text-align: center;
+        padding: 0 10px 0 10px;
+        margin: 0;
+    }
+}
+
+
