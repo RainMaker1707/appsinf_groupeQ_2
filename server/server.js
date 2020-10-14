@@ -4,19 +4,21 @@ let session = require('express-session');
 let parser = require('body-parser');
 
 // DIY modules
-let loginTools = require('./res/login.js');
-
+let login = require('./res/login.js');
+let signUp = require('./res/signin.js');
+let Report = require('./res/report.js');
 
 let app = express();
-
 app.use(express.static('static'));
 app.use(parser.urlencoded({extended: true}));
 
 app.post('/login', function(req, res, next){
     console.log(req.body);// TODO remove debug log
-    if(loginTools.login(req.body.pseudo, req.body.password).rep){
+    if(login(req.body.pseudo, req.body.password).rep){
+        // TODO add user name and session
         res.redirect("/main.html");
     }else{
+        // TODO add message in login.html
         res.redirect("/pages/login.html");
     }
 });

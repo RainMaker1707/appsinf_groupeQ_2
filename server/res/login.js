@@ -8,8 +8,8 @@ function userExist(user){
     return user === "admin";
 }
 
-module.exports = {
-    login: function(user, pwd){
+module.exports =
+    function login(user, pwd){
         if (userExist(user)){
             if (checkPwd(pwd)){
                 // TODO connect user
@@ -34,5 +34,4 @@ module.exports = {
                 rep: false
             };
         }
-    }
-};
+    };
