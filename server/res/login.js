@@ -13,7 +13,7 @@ module.exports = {
         if (userExist(user)){
             if (checkPwd(pwd)){
                 // TODO connect user
-                console.log("connection for user : " + user);
+                console.log("Connection for user : " + user);
                 return {
                     exitCode: 0,
                     rep: true
