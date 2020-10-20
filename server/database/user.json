@@ -1,4 +1,10 @@
 {
-  "name": "admin",
-  "password": "root"
+  "pseudo": "admin",
+  "mail": "admin@admin.be",
+  "password": "$2b$10$6lPOj9XLXVwnkZw2KVmqaukOkCFHPpq16oGkB1ShihH62etJjNsX6"
+}
+{
+  "pseudo": "RainMaker",
+  "mail": "hadrienallegaert@icloud.com",
+  "password": "$2b$10$6lPOj9XLXVwnkZw2KVmqaukOkCFHPpq16oGkB1ShihH62etJjNsX6"
 }

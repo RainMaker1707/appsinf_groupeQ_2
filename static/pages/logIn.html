@@ -27,15 +27,16 @@
 
                 <div id="rectangle3"></div>
 
-                <form class="text-center" action="../signin" method="post" id="signIn">
+                <form class="text-center" action="../sign" method="post" id="signIn">
                     <label for="mail"></label>
                     <input type="email" id="mail" name="mail" placeholder="Email" required/>
                     <label for="pseudo_in"></label>
                     <input type="text" id="pseudo_in" name="pseudo" placeholder="Pseudo" required/>
                     <label for="pwd_in"></label>
-                    <input type="password" id="pwd_in" name="password" placeholder="Password" required/>
+                    <input type="password" id="pwd_in" name="password" placeholder="Password" minlength="8" maxlength="256" required/>
                     <label for="pwd_in_conf"></label>
-                    <input type="text" id="pwd_in_conf" name="passConf" placeholder="Password confirmation" required/>
+                    <input type="password" id="pwd_in_conf" name="passwordConfirmation" placeholder="Password confirmation"
+                           minlength="8" maxlength="256" required/>
                     <input class="myBtn btn btn-primary btn-lg" type="submit" value="S'inscrire"/>
                 </form>
             </div>

@@ -1,11 +1,3 @@
-function mail(){
+module.exports = function mail(){
 
-}
-
-function sendMail(){
-
-}
-
-function genCode(){
-
-}
+};
