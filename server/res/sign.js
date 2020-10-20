@@ -1,4 +1,5 @@
 let bcrypt = require('bcrypt');
+let login = require('./login.js');
 
 module.exports = function sign(req, res, db){
     // console.log("function sign arg : %s, %s, %s", req.body.pseudo, req.body.mail, req.body.password);
@@ -18,7 +19,7 @@ module.exports = function sign(req, res, db){
                     };
                     dbo.collection('users').insertOne(newUser, (err, data) => {
                         if(err) throw err;
-                        res.redirect('/');
+                        login(req.body.pseudo, req.body.password, db, res);
                     });
                 })
             });
