@@ -42,13 +42,13 @@ Les autres pages html se trouves dans le dossier:
 #### Lancement du serveur
 
 Afin de correctement faire tourner le serveur et sa base de donnée il vous faudra:
-######1 Installer les modules
+###### 1 Installer les modules
 
 les modules utilisés sont: express, express-session, mongodb, bcrypt, body-parser. <br/>
 Assurez vous de les avoir installer avant d'essayer de lancer le servur, leur installation
 peut etre fait via une commande npm <br/> &nbsp;&nbsp;&nbsp;&nbsp;
     `npm install <module_name>` 
-######2 MongoDB
+###### 2 MongoDB
 
 Ouvrez un terminal dans un dossier quelconque (attention plusieurs fichiers s'installeront dans ce dossier et nous vous
 conseillons donc d'en créer un pour les accueillir).
@@ -61,7 +61,7 @@ la commandes suivantes afin de charger les presets de la base de données:
 <br/> &nbsp;&nbsp;&nbsp;&nbsp; `mongoimport -d olln -c users user.json`
 
 
-######3 Lancement du serveur
+###### 3 Lancement du serveur
 
 Se placer dans le dossier app dans un terminal grâce à la commande cd:
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;    `cd 'DirWhereYouStoredIt'/appsinfNode/`
@@ -69,7 +69,7 @@ Se placer dans le dossier app dans un terminal grâce à la commande cd:
 Ensuite executer le serveur avec la commande:
 <br/> &nbsp;&nbsp;&nbsp;&nbsp;    `node server/server.js`
 
-######4 Utilisateurs preset
+###### 4 Utilisateurs preset
 
     1° pseudo: admin, password: rootpass
     
