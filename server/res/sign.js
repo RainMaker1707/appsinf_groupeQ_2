@@ -6,7 +6,10 @@ module.exports = function sign(req, res, db){
     let dbo = db.db('olln');
     dbo.collection('users').findOne({"mail": req.body.mail}, (err, doc) =>{
         if(err) throw err;
-        if(doc!==null) console.log("user email already registered"); //TODO display message in html page
+        if(doc!==null) {
+            console.log("user email already registered"); //TODO display message in html page
+            res.redirect('/pages/login.html');
+        }
         else {
             bcrypt.genSalt(10, (err, salt) => {
                 if(err) throw err;
