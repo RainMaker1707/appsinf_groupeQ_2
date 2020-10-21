@@ -42,7 +42,7 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
 
         app.get('/log', function(req, res, next){
             if(session.pseudo !== undefined){
-                console.log('Already connected as %s', session.pseudo);
+                console.log('Already connected as %s', session.pseudo);//TODO display message on html pages
                 res.redirect('/');
             }else res.redirect('/pages/login.html');
         });
@@ -59,13 +59,19 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
         });
 
         // pre-build function to debug
-        app.get('/reportAccess', function(req, res){
+        app.get(['/reportAccess', './pages/report.html'], function(req, res){
             if(session.pseudo === undefined){
-                console.log('you have to be connected');
+                console.log('you have to be connected to report');//TODO display message on html pages
                 res.redirect('/log');
             }else res.redirect('/pages/report.html');
         });
 
+        app.post('/report', function(req, res){
+           if(session.pseudo === undefined){
+               console.log('you have to be connected to report');//TODO display message on html pages
+               res.redirect('/log');
+           } else res.redirect('/');
+        });
     }
 });
 
