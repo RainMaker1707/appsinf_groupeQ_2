@@ -11,7 +11,7 @@ module.exports = function sign(req, res, db, session){
             if (err) throw err;
             if (doc !== null) {
                 console.log("user email already registered"); //TODO display message in html page
-                res.redirect('/pages/login.html');
+                res.redirect('/log');
             } else {
                 bcrypt.genSalt(10, (err, salt) => {
                     if (err) throw err;

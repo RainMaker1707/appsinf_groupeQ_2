@@ -11,14 +11,14 @@ module.exports = function login(req, res, db, session){
             if (doc === null) {
                 //TODO display 'not registered' message in login page
                 console.log('User not registered');
-                res.redirect('/pages/login.html');
+                res.redirect('/log');
             } else {
                 bcrypt.compare(req.body.password, doc.password, (err, check) => {
                     if (err) throw err;
                     if (!check) {
                         //TODO display 'wrong password' message in login page
                         console.log('wrong password');
-                        res.redirect('/pages/login.html');
+                        res.redirect('/log');
                     } else {
                         console.log('connected as %s', req.body.pseudo);//TODO display message on html pages
                         session._id = doc._id;
