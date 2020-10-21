@@ -1,7 +1,7 @@
 let bcrypt = require('bcrypt');
 let login = require('./login.js');
 
-module.exports = function sign(req, res, db){
+module.exports = function sign(req, res, db, session){
     // console.log("function sign arg : %s, %s, %s", req.body.pseudo, req.body.mail, req.body.password);
     let dbo = db.db('olln');
     dbo.collection('users').findOne({"mail": req.body.mail}, (err, doc) =>{
@@ -22,7 +22,8 @@ module.exports = function sign(req, res, db){
                     };
                     dbo.collection('users').insertOne(newUser, (err, data) => {
                         if(err) throw err;
-                        login(req.body.pseudo, req.body.password, db, res);
+                        console.log('user %s now inserted');
+                        login(req, res, db, session);
                     });
                 })
             });
