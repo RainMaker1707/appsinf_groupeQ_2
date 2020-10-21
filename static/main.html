@@ -44,10 +44,12 @@
                         </form>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-primary btn-block" type="button" id="repButton" onclick="location.href='pages/report.html';">Déclarer un accident</button>
+                        <form action="/reportAccess" method="get">
+                            <input type="submit" class="btn btn-primary btn-block" value="Déclarer un accident" id="repButton">
+                        </form>
                     </li>
                     <li class="nav-item">
-                        <form>
+                        <form action="/search" method="get">
                             <label for="search" class="form-label offscreen">Search: </label>
                             <input class="" type="search" id="search" name="sh" size="100" placeholder="Recherche"/>
                         </form>

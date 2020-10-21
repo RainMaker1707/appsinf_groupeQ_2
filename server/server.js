@@ -59,9 +59,11 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
         });
 
         // pre-build function to debug
-        app.post('/report', function(req, res){
-            console.log(req.body); // TODO remove debug log
-            res.redirect("/");
+        app.get('/reportAccess', function(req, res){
+            if(session.pseudo === undefined){
+                console.log('you have to be connected');
+                res.redirect('/log');
+            }else res.redirect('/pages/report.html');
         });
 
     }
