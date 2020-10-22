@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,16 +38,21 @@
 
         <div class="collapse navbar-collapse" id="nav-col--">
             <menu class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <form action="/log" method="get">
-                        <input type="submit" class="btn btn-primary btn-block" value="Connexion" id="logButton">
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form action="/reportAccess" method="get">
-                        <input type="submit" class="btn btn-primary btn-block" value="Déclarer un accident" id="repButton">
-                    </form>
-                </li>
+                <%if(!locals.pseudo) {%>
+                    <li class="nav-item">
+                        <a type="submit" class="btn btn-primary btn-block" href="/log" id="logButton">Connexion</a>
+                    </li>
+                <%}else{%>
+                    <li class="nav-item dropdown">
+                        <p id="userTag" class="dropdown-toggle"><%= locals.pseudo.toString()%></p>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="/disconnect">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a type="submit" class="btn btn-primary btn-block" href="/report" id="repButton">Déclarer un accident</a>
+                    </li>
+                <%}%>
                 <li class="nav-item">
                     <form action="/search" method="get">
                         <label for="search" class="form-label offscreen">Search: </label>

@@ -46,6 +46,23 @@ menu li{
     text-align: center;
 }
 
+#userTag{
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15%;
+    font-family: Verdana, serif;
+}
+
+.dropdown:hover>.dropdown-menu{
+    display: block;
+}
+
+.dropdown-menu{
+    display:none;
+}
+
 .navbar{
     width: 100vw;
 }

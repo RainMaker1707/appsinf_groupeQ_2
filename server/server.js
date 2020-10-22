@@ -18,7 +18,7 @@ app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.use(parser.urlencoded({extended: true}));
 app.use(session({
-    secret : "SECRET PHRASE HERE",
+    secret : "not_s3cr3t_s3nt3nc3",
     resave : false,
     saveUninitialized : true,
     cookie : {
@@ -38,7 +38,8 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
         console.log("---------- CONNECTED ----------"); // TODO remove after debug
         // redirect localhost:8080 to localhost:8080/main.html
         app.get('/', function(req, res){
-            res.render('../server/views/index');
+            if(session.pseudo === undefined) res.render('../server/views/index');
+            else res.render('../server/views/index', {pseudo: session.pseudo});
         });
 
         app.get('/log', function(req, res, next){
@@ -60,18 +61,23 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
         });
 
         // pre-build function to debug
-        app.get('/reportAccess', function(req, res){
+        app.get('/report', function(req, res){
             if(session.pseudo === undefined){
-                console.log('you have to be connected to report');//TODO display message on html pages
                 res.redirect('/log');
             }else res.render('../server/views/report');
         });
 
-        app.post('/report', function(req, res){
+        app.post('/postReport', function(req, res){
            if(session.pseudo === undefined){
-               console.log('you have to be connected to report');//TODO display message on html pages
                res.redirect('/log');
            } else res.redirect('/');
+        });
+
+        app.get('/disconnect', function(req, res){
+            delete session._id;
+            delete session.mail;
+            delete session.pseudo;
+            res.redirect('/');
         });
     }
 });
