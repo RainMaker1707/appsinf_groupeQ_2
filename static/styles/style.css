@@ -68,6 +68,18 @@ menu li{
     border: 1px solid #b4e2d3;
 }
 
+.dropdown-item a{
+    color: white;
+}
+
+.dropdown-item a:hover{
+    text-decoration: none;
+}
+
+.dropdown-item:hover{
+    background-color: #343a40;
+}
+
 .navbar{
     width: 100vw;
 }
