@@ -19,8 +19,10 @@
                 <form class="text-center" action="../login" method="post" id="login">
                     <label for="pseudo"></label>
                     <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required/>
+                    <%if(locals.userAlert!==undefined){%><p class="userAlert"><%=locals.userAlert%></p><%}%>
                     <label for="pwd"></label>
                     <input type="password" id="pwd" name="password" placeholder="Mot de passe" required/>
+                    <%if(locals.pwdAlert!==undefined){%><p class="userAlert"><%=locals.pwdAlert%></p><%}%>
                     <input class="myBtn btn btn-primary btn-lg" type="submit" value="Se connecter"/>
                 </form>
                 <a class="text-center" id="fgPwd" href='/'> Mot de passe oublié</a>
@@ -37,6 +39,7 @@
                     <label for="pwd_in_conf"></label>
                     <input type="password" id="pwd_in_conf" name="passwordConfirmation" placeholder="Password confirmation"
                            minlength="8" maxlength="256" required/>
+                    <%if(locals.passwordDontMatch!==undefined){%><p class="userAlert"><%=locals.passwordDontMatch%></p><%}%>
                     <input class="myBtn btn btn-primary btn-lg" type="submit" value="S'inscrire"/>
                 </form>
             </div>

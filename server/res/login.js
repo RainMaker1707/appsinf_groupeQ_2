@@ -8,16 +8,12 @@ module.exports = function login(req, res, db, session){
         dbo.collection('users').findOne({'pseudo': req.body.pseudo}, (err, doc) => {
             if (err) throw err;
             if (doc === null) {
-                //TODO display 'not registered' message in login page
-                console.log('User not registered');
-                res.redirect('/log');
+                res.render('../server/views/login', {userAlert: "User not registered"});
             } else {
                 bcrypt.compare(req.body.password, doc.password, (err, check) => {
                     if (err) throw err;
                     if (!check) {
-                        //TODO display 'wrong password' message in login page
-                        console.log('wrong password');
-                        res.redirect('/log');
+                        res.render('../server/views/login', {pwdAlert: "Wrong password"});
                     } else {
                         console.log('connected as %s', req.body.pseudo);//TODO display message on html pages
                         session._id = doc._id;
