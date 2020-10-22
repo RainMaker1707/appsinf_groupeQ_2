@@ -51,14 +51,6 @@ p{
     max-height: 65%;
 }
 
-.date{
-
-}
-
-.localisation{
-
-}
-
 @media(max-width: 410px){
     .report-container{
         display: block;
@@ -78,6 +70,9 @@ p{
         text-align: center;
         padding: 0 10px 0 10px;
         margin: 0;
+    }
+    .image{
+        max-height: 45%;
     }
 }
 
