@@ -38,8 +38,14 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
         console.log("---------- CONNECTED ----------"); // TODO remove after debug
         // redirect localhost:8080 to localhost:8080/main.html
         app.get('/', function(req, res){
-            if(session.pseudo === undefined) res.render('../server/views/index');
-            else res.render('../server/views/index', {pseudo: session.pseudo});
+            let dbo = db.db('olln');
+            dbo.collection('reports').find({}).toArray((err, doc) =>{
+                if(err) throw err;
+                if(session.pseudo === undefined) res.render('../server/views/index', {reports: doc});
+                else {
+                    res.render('../server/views/index', {pseudo: session.pseudo, reports: doc});
+                }
+            });
         });
 
         app.get('/log', function(req, res, next){
