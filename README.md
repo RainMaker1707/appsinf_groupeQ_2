@@ -57,8 +57,10 @@ Une fois dans ce dossier tapez la commande suivante :
 Un serveur MongoDB s'est lancé dans ce terminal, ne le fermez pas ! <br/>
 
 Ouvrez donc un second terminal et placez vous dans le dossier /server/database/` du projet`et entrez 
-la commandes suivantes afin de charger les presets de la base de données:
-<br/> &nbsp;&nbsp;&nbsp;&nbsp; `mongoimport -d olln -c users user.json`
+les commandes suivantes afin de charger les presets de la base de données:
+<br/> &nbsp;&nbsp;&nbsp;&nbsp; `mongoimport -d olln -c users user.json ` 
+<br/> &nbsp;&nbsp;&nbsp;&nbsp; `mongoimport -d olln -c reports reports.json`
+
 
 
 ###### 3 Lancement du serveur
