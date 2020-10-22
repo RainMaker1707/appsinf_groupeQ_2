@@ -51,7 +51,6 @@ menu li{
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding-top: 15%;
     font-family: Verdana, serif;
 }
 
@@ -60,7 +59,13 @@ menu li{
 }
 
 .dropdown-menu{
-    display:none;
+    display: none;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #343a40;
+    border: 1px solid #b4e2d3;
 }
 
 .navbar{
@@ -93,11 +98,24 @@ menu:last-child{
     #search{
         width: 100%;
     }
+    .dropdown-menu{
+        margin-top: 0;
+    }
+    #userTag{
+        padding-top: 0;
+    }
+
 }
 
 @media (min-width: 992px) {
     #search{
         width: 180px;
+    }
+    .dropdown-menu{
+        margin-top: 10px;
+    }
+    #userTag{
+        padding-top: 15%;
     }
 }
 

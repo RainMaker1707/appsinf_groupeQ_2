@@ -2,7 +2,6 @@ let bcrypt = require('bcrypt');
 
 module.exports = function login(req, res, db, session){
     if(session.pseudo !== undefined){
-        console.log('Already connected as %s', session.pseudo);//TODO display message on html pages
         res.redirect('/');
     }else {
         let dbo = db.db('olln');

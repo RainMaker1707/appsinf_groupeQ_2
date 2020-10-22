@@ -56,7 +56,10 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
 
         // pattern for sign up method
         app.post('/sign', function(req, res){
-            if(req.body.password !== req.body.passwordConfirmation) console.log("password don't match");//TODO display message on html pages
+            if(req.body.password !== req.body.passwordConfirmation) {
+                console.log("password don't match"); //TODO display message on html pages
+                res.redirect('/log')
+            }
             else sign(req, res, db, session);
         });
 
