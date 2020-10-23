@@ -45,6 +45,17 @@ input[type=text], input[type=email], input[type=password]{
     border-radius: 15px;
 }
 
+.alert{
+    width: 85%;
+    height: 2%;
+    color: white;
+    font-size: .7em;
+    border: 1px solid rgba(212, 19, 21, 0.79);
+    background-color: rgba(174, 8, 8, 0.68);
+    margin-left: 7.5%;
+    padding: 2px 0 2px 0;
+}
+
 #rectangle3{
     width: 100%;
     height: 2%;

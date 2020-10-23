@@ -15,7 +15,6 @@ module.exports = function login(req, res, db, session){
                     if (!check) {
                         res.render('../server/views/login', {pwdAlert: "Wrong password"});
                     } else {
-                        console.log('connected as %s', req.body.pseudo);//TODO display message on html pages
                         session._id = doc._id;
                         session.mail = doc.mail;
                         session.pseudo = doc.pseudo;

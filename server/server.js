@@ -31,11 +31,11 @@ app.use(session({
 
 MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
     if(err) {
-        console.log("-----------  ERROR  -----------"); // TODO remove after debug
+        console.log("-----------  ERROR  -----------");
         throw err;
     }
     else {
-        console.log("---------- CONNECTED ----------"); // TODO remove after debug
+        console.log("---------- CONNECTED ----------");
         // redirect localhost:8080 to localhost:8080/main.html
         app.get('/', function(req, res){
             let dbo = db.db('olln');
@@ -62,10 +62,7 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
 
         // pattern for sign up method
         app.post('/sign', function(req, res){
-            if(req.body.password !== req.body.passwordConfirmation) {
-                res.render('../server/views/login', {passwordDontMatch: "Passwords don't match"})
-            }
-            else sign(req, res, db, session);
+            sign(req, res, db, session);
         });
 
         // pre-build function to debug
