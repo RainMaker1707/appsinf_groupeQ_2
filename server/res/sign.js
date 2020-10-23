@@ -2,16 +2,16 @@ let bcrypt = require('bcrypt');
 let login = require('./login.js');
 
 module.exports = function sign(req, res, db, session){
-    if(session.pseudo !== undefined) res.redirect('/');
+    if(session.pseudo) res.redirect('/');
     else {
         let dbo = db.db('olln');
         dbo.collection('users').findOne({"mail": req.body.mail}, (err, doc) => {
             if (err) throw err;
-            if (doc !== null) res.render('../server/views/login', {mailAlert: "Email already registered"});
+            if (doc) res.render('../server/views/login', {mailAlert: "Email already registered"});
             else{
                 dbo.collection('users').findOne({"pseudo": req.body.pseudo}, (err, doc)=>{
                     if(err) throw err;
-                    else if(doc !== null) res.render('../server/views/login', {pseudoAlert: "Pseudo already used"});
+                    else if(doc) res.render('../server/views/login', {pseudoAlert: "Pseudo already used"});
                     else if(req.body.password !== req.body.passwordConfirmation) res.render('../server/views/login', {passwordDontMatch: "Passwords don't match"})
                     else {
                         bcrypt.genSalt(10, (err, salt) => {
