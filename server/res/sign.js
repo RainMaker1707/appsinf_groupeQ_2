@@ -2,9 +2,8 @@ let bcrypt = require('bcrypt');
 let login = require('./login.js');
 
 module.exports = function sign(req, res, db, session){
-    if(session.pseudo !== undefined) {
-        res.redirect('/');
-    }else {
+    if(session.pseudo !== undefined) res.redirect('/');
+    else {
         let dbo = db.db('olln');
         dbo.collection('users').findOne({"mail": req.body.mail}, (err, doc) => {
             if (err) throw err;
@@ -26,7 +25,6 @@ module.exports = function sign(req, res, db, session){
                                 };
                                 dbo.collection('users').insertOne(newUser, (err, data) => {
                                     if (err) throw err;
-                                    console.log('user %s now inserted', req.body.pseudo);//TODO display message on html pages
                                     login(req, res, db, session);
                                 });
                             })

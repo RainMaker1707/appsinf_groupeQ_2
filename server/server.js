@@ -42,17 +42,13 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
             dbo.collection('reports').find({}).toArray((err, doc) =>{
                 if(err) throw err;
                 if(session.pseudo === undefined) res.render('../server/views/index', {reports: doc});
-                else {
-                    res.render('../server/views/index', {pseudo: session.pseudo, reports: doc});
-                }
+                else res.render('../server/views/index', {pseudo: session.pseudo, reports: doc});
             });
         });
 
         app.get('/log', function(req, res, next){
-            if(session.pseudo !== undefined){
-                console.log('Already connected as %s', session.pseudo);//TODO display message on html pages
-                res.redirect('/');
-            }else res.render('../server/views/login')
+            if(session.pseudo !== undefined)res.redirect('/');
+            else res.render('../server/views/login')
         });
 
         // pattern for login post method
@@ -67,15 +63,12 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
 
         // pre-build function to debug
         app.get('/report', function(req, res){
-            if(session.pseudo === undefined){
-                res.redirect('/log');
-            }else res.render('../server/views/report');
+            if(session.pseudo === undefined) res.redirect('/log');
+            else res.render('../server/views/report');
         });
 
         app.post('/postReport', function(req, res){
-           if(session.pseudo === undefined){
-               res.redirect('/log');
-           } else res.redirect('/');
+           report(req, res, db, session);
         });
 
         app.get('/disconnect', function(req, res){
