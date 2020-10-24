@@ -46,7 +46,7 @@ Afin de correctement faire tourner le serveur et sa base de donnée il vous faud
 ###### 1 Installer les modules
 Premièrement initialiser node dans le projet avec la commande: `npm init`
 Ceci installera un dossier avec les exécutable requis de NodeJs.<br/>
-Les modules utilisés sont: _express, express-session, mongodb, bcrypt, body-parser, ejs_. <br/>
+Les modules utilisés sont: _express, express-session, mongodb, bcrypt, body-parser, ejs, multer_. <br/>
 Assurez vous de les avoir installé avant d'essayer de lancer le serveur, leur installation
 peut etre fait via une commande npm <br/> &nbsp;&nbsp;&nbsp;&nbsp;
     `npm install <module_name>` 
