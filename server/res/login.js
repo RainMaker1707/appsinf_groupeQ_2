@@ -4,8 +4,7 @@ module.exports = function login(req, res, db, session){
     if(session.pseudo){
         res.redirect('/');
     }else {
-        let dbo = db.db('olln');
-        dbo.collection('users').findOne({'pseudo': req.body.pseudo}, (err, doc) => {
+        db.db('olln').collection('users').findOne({'pseudo': req.body.pseudo}, (err, doc) => {
             if (err) throw err;
             if (!doc) res.render('../server/views/login', {userAlert: "User not registered"});
             else {

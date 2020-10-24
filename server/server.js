@@ -5,6 +5,10 @@ let session = require('express-session');
 const multer = require('multer');
 const upload = multer({});
 let MongoClient = require('mongodb').MongoClient;
+let http = require('http');
+let https = require('https');
+let bcrypt = require('bcrypt');
+let fs= require('fs');
 
 // DIY modules
 let login = require('./res/login.js');
@@ -35,13 +39,20 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
     if(err) {
         console.log("-----------  ERROR  -----------");
         throw err;
-    }
-    else {
+    } else {
         console.log("---------- CONNECTED ----------");
         // redirect localhost:8080 to localhost:8080/main.html
         app.get('/', function(req, res){
-            let dbo = db.db('olln');
-            dbo.collection('reports').find({}).toArray((err, doc) =>{
+
+            bcrypt.genSalt(10, (err, salt)=>{
+                if(err) throw err;
+                bcrypt.hash("Si3gfri3d", salt, (err, hash)=>{
+                    if(err) throw err;
+                    console.log(hash);
+                })
+            });
+
+            db.db('olln').collection('reports').find({}).toArray((err, doc) =>{
                 if(err) throw err;
                 if(session.pseudo === undefined) res.render('../server/views/index', {reports: doc});
                 else res.render('../server/views/index', {pseudo: session.pseudo, reports: doc});
@@ -83,4 +94,13 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
 });
 
 //listen server port
-app.listen('8080');
+https.createServer({
+    key: fs.readFileSync('./server/key.pem'),
+    cert: fs.readFileSync('./server/server.crt'),
+}, app).listen(443);
+
+// Redirect from http port 80 to https
+http.createServer((req, res) => {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(80);
