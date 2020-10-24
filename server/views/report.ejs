@@ -16,12 +16,12 @@
     <div class="row justify-content-center align-items-center" id="rectangle">
         <div class="row justify-content-center align-items-center" id="rectangle2">
             <div class="row justify-content-center align-items-center">
-                <form class="text-center" action="../postReport" method="post">
+                <form class="text-center" action="../postReport" method="post" enctype="multipart/form-data">
                     <label for="accident"></label>
-                    <input type="text" id="accident" name="Accident" placeholder="Details de l'accident"/>
-                    <label for="localization"></label>
-                    <input type="text" id="localization" name="Localization" placeholder="Localisation"/>
-                    <input  class="imgInput" type="file" name="image" accept="image/*"/>
+                    <input type="text" id="accident" name="accident" placeholder="Details de l'accident" minlength="50" required/>
+                    <label for="localisation"></label>
+                    <input type="text" id="localisation" name="localisation" placeholder="Localisation" minlength="10" required/>
+                    <input  class="imgInput" type="file" name="image" accept="image/jpg, image/jpeg, image/png"/>
                     <input class="myBtn btn btn-danger btn-lg" type="submit" value="Soumettre">
                 </form>
             </div>

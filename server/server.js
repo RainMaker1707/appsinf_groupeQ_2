@@ -2,6 +2,8 @@
 let express = require('express');
 let parser = require('body-parser');
 let session = require('express-session');
+const multer = require('multer');
+const upload = multer({});
 let MongoClient = require('mongodb').MongoClient;
 
 // DIY modules
@@ -67,7 +69,7 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
             else res.render('../server/views/report');
         });
 
-        app.post('/postReport', function(req, res){
+        app.post('/postReport', upload.single('image'), function(req, res){
            report(req, res, db, session);
         });
 
