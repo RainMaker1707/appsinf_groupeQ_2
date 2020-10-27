@@ -43,52 +43,50 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db) => {
         console.log("---------- CONNECTED ----------");
         // redirect localhost:8080 to localhost:8080/main.html
         app.get('/', function(req, res){
-
-            bcrypt.genSalt(10, (err, salt)=>{
-                if(err) throw err;
-                bcrypt.hash("Si3gfri3d", salt, (err, hash)=>{
-                    if(err) throw err;
-                    console.log(hash);
-                })
-            });
-
             db.db('olln').collection('reports').find({}).toArray((err, doc) =>{
                 if(err) throw err;
-                if(session.pseudo === undefined) res.render('../server/views/index', {reports: doc});
-                else res.render('../server/views/index', {pseudo: session.pseudo, reports: doc});
+                if(req.session.pseudo === undefined) res.render('../server/views/index', {reports: doc});
+                else res.render('../server/views/index', {pseudo: req.session.pseudo, reports: doc});
             });
         });
 
         app.get('/log', function(req, res, next){
-            if(session.pseudo !== undefined)res.redirect('/');
-            else res.render('../server/views/login')
+            if(req.session.pseudo !== undefined)res.redirect('/');
+            else res.render('../server/views/login', {cookie: req.session.showCookieAlert})
         });
 
         // pattern for login post method
         app.post('/login', function (req, res) {
-            login(req, res, db, session);
+            login(req, res, db);
         });
 
         // pattern for sign up method
         app.post('/sign', function(req, res){
-            sign(req, res, db, session);
+            sign(req, res, db);
         });
 
         // pre-build function to debug
         app.get('/report', function(req, res){
-            if(session.pseudo === undefined) res.redirect('/log');
+            if(req.session.pseudo === undefined) res.redirect('/log');
             else res.render('../server/views/report');
         });
 
         app.post('/postReport', upload.single('image'), function(req, res){
-           report(req, res, db, session);
+           report(req, res, db);
         });
 
         app.get('/disconnect', function(req, res){
-            delete session._id;
-            delete session.mail;
-            delete session.pseudo;
+            delete req.session._id;
+            delete req.session.mail;
+            delete req.session.pseudo;
             res.redirect('/');
+        });
+
+        app.post('/ajaxCookieAlert', (req, res) => {
+            if(req.body.showCookieAlert === "false"){
+                req.session.showCookieAlert = req.body.showCookieAlert;
+                res.status(200).send('Alert will not appear again.');
+            }else res.status(400).send('ERROR_SET_showCookieAlert_FALSE');
         });
     }
 });

@@ -1,8 +1,8 @@
 const multer = require('multer');
 const upload = multer({});
 
-module.exports = function report(req, res, db, session){
-    if(session.pseudo === undefined) res.redirect('/log');
+module.exports = function report(req, res, db){
+    if(req.session.pseudo === undefined) res.redirect('/log');
     else{
 
         let img;
@@ -13,7 +13,7 @@ module.exports = function report(req, res, db, session){
         let today = new Date();
         let date = today.getDate() + " " + months[today.getMonth()] + " " + today.getFullYear();
         let newReport = {
-            "author": session.pseudo,
+            "author": req.session.pseudo,
             "localisation": req.body.localisation,
             "description": req.body.accident,
             "date": date,
