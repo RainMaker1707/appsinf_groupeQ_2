@@ -23,7 +23,7 @@ module.exports = function sign(req, res, db){
                                     "mail": req.body.mail,
                                     "password": hash
                                 };
-                                dbo.collection('users').insertOne(newUser, (err, data) => {
+                                dbo.collection('users').insertOne(newUser, (err) => {
                                     if (err) throw err;
                                     login(req, res, db);
                                 });

@@ -1,10 +1,6 @@
-const multer = require('multer');
-const upload = multer({});
-
 module.exports = function report(req, res, db){
     if(req.session.pseudo === undefined) res.redirect('/log');
     else{
-
         let img;
         if(!req.file) img = 'images/report_no_pic.jpeg';
         else img = "data:image/jpeg;base64," + req.file.buffer.toString('base64');
@@ -19,7 +15,7 @@ module.exports = function report(req, res, db){
             "date": date,
             "image": img
         };
-        db.db('olln').collection('reports').insertOne(newReport, (err, doc)=>{
+        db.db('olln').collection('reports').insertOne(newReport, (err)=>{
             if(err) throw err;
             else res.redirect('/');
         });
