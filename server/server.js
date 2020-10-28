@@ -18,6 +18,7 @@ let report = require('./res/report.js');
 let app = express();
 let dbUrl = 'mongodb://localhost:27017';
 
+// App configs
 app.use(express.static('static'));
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
@@ -34,6 +35,7 @@ app.use(session({
     }
 }));
 
+// DB connect and app react in callback
 MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
     if(err) {
         console.log("-----------  ERROR  -----------");
@@ -81,23 +83,16 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
             delete req.session.pseudo;
             res.redirect('/');
         });
-
-        app.post('/ajaxCookieAlert', (req, res)=>{
-            if(req.body.showCookieAlert === "false"){
-                req.session.showCookieAlert = req.body.showCookieAlert;
-                res.status(200).send('Alert will not appear again.');
-            }else res.status(400).send('ERROR_SET_showCookieAlert_FALSE');
-        });
     }
 });
 
-//listen server port 443
+// Server https listen server port 443
 https.createServer({
-    key: fs.readFileSync('./server/key.pem'),
-    cert: fs.readFileSync('./server/server.crt'),
+    key: fs.readFileSync('./server/cert.key'),
+    cert: fs.readFileSync('./server/cert.crt'),
 }, app).listen(443);
 
-// redirect from http port 80 to https port 443
+// Server http redirect from http port 80 to https port 443
 http.createServer((req, res)=>{
     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
