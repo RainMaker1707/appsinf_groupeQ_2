@@ -39,17 +39,17 @@
             <menu class="navbar-nav ml-auto">
                 <%if(!locals.pseudo){%>
                     <li class="nav-item">
-                        <a type="submit" class="btn btn-primary btn-block" href="/log" id="logButton">Connexion</a>
+                        <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/log'" id="logButton" >Connexion</button>
                     </li>
                 <%}else{%>
                     <li class="nav-item dropdown">
                         <p id="userTag" class="dropdown-toggle"><%= locals.pseudo.toString()%></p>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="/disconnect">Déconnexion</a></li>
+                            <li class="dropdown-item"><button class="btn btn-primary btn-block" onclick="location.href='/disconnect'">Déconnexion</button></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a type="submit" class="btn btn-primary btn-block" href="/report" id="repButton">Déclarer un accident</a>
+                        <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/report'" id="repButton">Déclarer un accident</button>
                     </li>
                 <%}%>
                 <li class="nav-item">

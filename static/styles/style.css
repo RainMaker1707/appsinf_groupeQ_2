@@ -66,14 +66,7 @@ menu li{
     justify-content: center;
     background-color: #343a40;
     border: 1px solid #b4e2d3;
-}
-
-.dropdown-item a{
-    color: white;
-}
-
-.dropdown-item a:hover{
-    text-decoration: none;
+    border-radius: 5px;
 }
 
 .dropdown-item:hover{
