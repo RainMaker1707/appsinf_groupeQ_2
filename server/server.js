@@ -42,7 +42,7 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
         console.log("---------- CONNECTED ----------");
 
         // redirect localhost:8080 to localhost:8080/main.html
-        app.get('/', function(req, res){
+        app.get('/', (req, res)=>{
             db.db('olln').collection('reports').find({}).toArray((err, doc)=>{
                 if(err) throw err;
                 if(req.session.pseudo === undefined) res.render('../server/views/index', {reports: doc});
@@ -50,7 +50,7 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
             });
         });
 
-        app.get('/log', (req, res, next)=>{
+        app.get('/log', (req, res)=>{
             if(req.session.pseudo !== undefined)res.redirect('/');
             else res.render('../server/views/login', {cookie: req.session.showCookieAlert})
         });
