@@ -9,7 +9,7 @@ let http = require('http');
 let https = require('https');
 let fs= require('fs');
 
-// DIY modules
+// DIM modules
 let login = require('./res/login.js');
 let sign = require('./res/sign.js');
 let report = require('./res/report.js');

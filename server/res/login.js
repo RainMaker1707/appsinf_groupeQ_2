@@ -15,6 +15,7 @@ module.exports = function login(req, res, db){
                         req.session._id = doc._id;
                         req.session.mail = doc.mail;
                         req.session.pseudo = doc.pseudo;
+                        req.session.cookieShow = true;
                         res.redirect('/');
                     }
                 });
