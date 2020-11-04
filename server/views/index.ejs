@@ -39,30 +39,36 @@
             <menu class="navbar-nav ml-auto">
                 <%if(!locals.pseudo){%>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/log'" id="logButton" >Connexion</button>
+                        <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/log'"
+                                id="logButton" >Connexion</button>
                     </li>
                 <%}else{%>
                     <li class="nav-item dropdown">
                         <p id="userTag" class="dropdown-toggle"><%= locals.pseudo.toString()%></p>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item"><button class="btn btn-primary btn-block" onclick="location.href='/disconnect'">Déconnexion</button></li>
+                            <li class="dropdown-item">
+                                <button class="btn btn-primary btn-block"
+                                        onclick="location.href='/disconnect'">Déconnexion</button>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/report'" id="repButton">Déclarer un accident</button>
+                        <button type="submit" class="btn btn-primary btn-block" onclick="location.href='/report'"
+                                id="repButton">Déclarer un accident</button>
                     </li>
                 <%}%>
                 <li class="nav-item">
-                    <form action="/search" method="get">
-                        <label for="search" class="form-label offscreen">Search: </label>
-                        <input class="" type="search" id="search" name="sh" size="100" placeholder="Recherche"/>
+                    <form action="/search" method="post" id="search-form">
+                        <label for="search-input" class="form-label offscreen">Search: </label>
+                        <input type="search" id="search-input" name="sh" size="100" placeholder="Recherche"/>
+                        <input type="submit" id="search-button" value=""/>
                     </form>
                 </li>
             </menu>
         </div>
         <script>window.onscroll = keepMenuOnTop; </script>
     </nav>
-
+    <%-include('cookieAlert')-%>
     <section class="row order-3 date" id="date-container">
         <p id="date" class="datepad"></p>
         <script>

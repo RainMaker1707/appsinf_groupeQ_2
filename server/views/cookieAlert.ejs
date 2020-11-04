@@ -1,0 +1,14 @@
+<%if(!locals.cookie){%>
+    <div class="cookieAlert alert alert-secondary text-center" role="alert">
+        <button id="cookieBtn" type="button" class="close"
+                data-dismiss="alert" aria-label="Close"
+                onclick="location.href='/cookieAlert'">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        
+        En poursuivant la navigation sur ce site vous accepté l'utilisation de cookie à des fins d'identification uniquement.<br/>
+        Aucune de vos données personnelles ne sera enregistrés excepté des données tels que votre pseudo et adresse mail,
+        et ceci de façon sécurisée.<br/>
+        Nous nous engageons à ne partager aucune de vos informations!
+    </div>
+<%}%>

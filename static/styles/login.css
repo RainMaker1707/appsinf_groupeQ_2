@@ -45,7 +45,7 @@ input[type=text], input[type=email], input[type=password]{
     border-radius: 15px;
 }
 
-.alert{
+.alert-custom{
     width: 85%;
     height: 2%;
     color: white;

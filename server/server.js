@@ -42,32 +42,35 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
         throw err;
     } else {
         console.log("---------- CONNECTED ----------");
-
         // redirect localhost:8080 to localhost:8080/main.html
         app.get('/', (req, res)=>{
             db.db('olln').collection('reports').find({}).toArray((err, doc)=>{
                 if(err) throw err;
-                if(req.session.pseudo === undefined) res.render('../server/views/index', {reports: doc});
-                else res.render('../server/views/index', {pseudo: req.session.pseudo, reports: doc});
+                if(req.session.pseudo === undefined) res.render('../server/views/index', {
+                    reports: doc,
+                    cookie: req.session.cookieShow
+                });
+                else res.render('../server/views/index', {
+                    pseudo: req.session.pseudo,
+                    reports: doc,
+                    cookie: req.session.cookieShow
+                });
             });
         });
 
         app.get('/log', (req, res)=>{
             if(req.session.pseudo !== undefined)res.redirect('/');
-            else res.render('../server/views/login', {cookie: req.session.showCookieAlert})
+            else res.render('../server/views/login', {cookie: req.session.cookieShow})
         });
 
-        // pattern for login post method
         app.post('/login', (req, res)=>{
             login(req, res, db);
         });
 
-        // pattern for sign up method
         app.post('/sign', (req, res)=>{
             sign(req, res, db);
         });
 
-        // pre-build function to debug
         app.get('/report', (req, res)=>{
             if(req.session.pseudo === undefined) res.redirect('/log');
             else res.render('../server/views/report');
@@ -83,6 +86,12 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
             delete req.session.pseudo;
             res.redirect('/');
         });
+
+        app.get('/cookieAlert', (req,res)=>{
+            req.session.cookieShow = true;
+            res.redirect('/');
+        });
+
     }
 });
 
