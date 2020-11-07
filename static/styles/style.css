@@ -100,13 +100,13 @@ menu:last-child{
 }
 
 @media (max-width: 992px){
-    #search-input{
+    #searchInput{
         width: 100%;
     }
 }
 
 @media (min-width: 992px) {
-    #search-input{
+    #searchInput{
         width: 180px;
     }
     #userTag{
@@ -114,7 +114,7 @@ menu:last-child{
     }
 }
 
-#search-input {
+#searchInput {
     background-color: #4D4D4D;
     color: white;
     margin-top: .5vh;

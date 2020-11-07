@@ -13,6 +13,7 @@ let fs= require('fs');
 let login = require('./res/login.js');
 let sign = require('./res/sign.js');
 let report = require('./res/report.js');
+let search =require('./res/search.js');
 
 // Global variables
 let app = express();
@@ -74,6 +75,10 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
         app.get('/report', (req, res)=>{
             if(req.session.pseudo === undefined) res.redirect('/log');
             else res.render('../server/views/report');
+        });
+
+        app.post('/search', (req,res)=>{
+            search(req, res, db);
         });
 
         app.post('/postReport', upload.single('image'), function(req, res){
