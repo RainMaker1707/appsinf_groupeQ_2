@@ -1,5 +1,7 @@
+const passCharacter = ["*", "+", "\\"];
+
 module.exports = function search(req, res, db){
-    if(req.body.search === "*" || req.body.search === "+") res.redirect('/');
+    if(passCharacter.includes(req.body.search)) res.redirect('/');
     else {
         db.db('olln').collection('reports').find({
             $or:
