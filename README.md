@@ -25,19 +25,15 @@ d'Ottignies-Louvain-La-Neuve qui offrira aux utilisateurs de poster un rapport c
 ###### 4 Gestion de plusieurs Users
 ###### 5 Implémentation d'une barre de recherche ainsi que de sa fonction
 
-#### Utilisation de la maquette prototype
+#### Remarque sur ce site web.
 Ouvrez la page `./main.html dans un navigateur (tester sur chrome uniquement).
 Le site est responsive pour la plupart des téléphones portables et la plupart des tailles 
 d'écrans disponible sur le marché de l'informatique.
-
-Le composant chargé de contenir les informations d'un ***"incident"*** sont toutes chargée à partir 
-d'un script Js se trouvant dans 
-    `./components/reportComp.js`
     
-Ce composant possède son propre fichier css:
-    `./styles/file.css`
-Les autres pages html se trouves dans le dossier:
-    `./pages/`
+Le composant de rapport possède son propre fichier css:
+    `./static/styles/file.css`
+Les autres pages html(ejs) se trouvent dans le dossier:
+    `./server/views/`
 
 #### Lancement du serveur
 
