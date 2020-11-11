@@ -1,18 +1,14 @@
-# Projet en approfondissement informatique LINFO1212
+# Projet préparatoire: Approfondissement informatique LINFO1212
 
 #### Introduction
 
 Le but de ce projet est de mettre au point un site web dynamique (HTML ; CSS & JavaScript) 
-utilisant une base de donnée (MongoDB), le tout hébergé sur un serveur* (Node.JS). 
-
-Ce cours comprendra d'abord un projet préparatoire qui nous formera durant 9 semaines afin 
-de mettre au point, de manière autonome, un site web de notre choix respectant au minimum 
-les critères demandés. 
+utilisant une base de donnée (MongoDB), le tout hébergé sur un serveur* (Node.JS).  
 
 #### Thème du projet préparatoire
 
 Le projet préparatoire consistera à mettre au point un site web de la commune 
-d'Ottignies-Louvain-La-Neuve qui offrira aux utilisateurs de poster un rapport concernant
+d'Ottignies-Louvain-La-Neuve qui offrira aux utilisateurs la possibilité de poster un rapport concernant
  un quelconque incident sur la voie publique (inspiré de FixMyStreet @ Bruxelles). 
  Ce site devra comporter 3 pages : Un menu principal; Un écran Log In/Sign In; 
  Rapport d'incident.
@@ -40,34 +36,43 @@ Les autres pages html(ejs) se trouvent dans le dossier:
 Afin de correctement faire tourner le serveur et sa base de donnée il vous faudra:
 
 ###### 1 Installer les modules
-Premièrement initialiser node dans le projet avec la commande: `npm init`
+Premièrement initialiser node dans le projet avec la commande: 
+    
+    `npm init`
 Ceci installera un dossier avec les exécutable requis de NodeJs.<br/>
 Les modules utilisés sont: _express, express-session, mongodb, bcrypt, body-parser, ejs, multer_. <br/>
 Assurez vous de les avoir installé avant d'essayer de lancer le serveur, leur installation
 peut etre fait via une commande npm <br/> &nbsp;&nbsp;&nbsp;&nbsp;
+    
     `npm install <module_name>` 
 ###### 2 MongoDB
-
-Ouvrez un terminal dans un dossier quelconque (attention plusieurs fichiers s'installeront dans ce dossier et nous vous
+Installer MongoDB sur votre systême puis ouvrez 
+un terminal dans un dossier quelconque 
+(attention plusieurs fichiers s'installeront dans 
+ce dossier et nous vous
 conseillons donc d'en créer un pour les accueillir).
 Une fois dans ce dossier tapez la commande suivante :
-<br/> `mongod --dbpath .` <br/>
+    
+    `mongod --dbpath .`
 Un serveur MongoDB s'est lancé dans ce terminal, ne le fermez pas ! <br/>
 
-Ouvrez donc un second terminal et placez vous dans le dossier /server/database/` du projet`et entrez 
+Ouvrez donc un second terminal et placez vous dans le dossier /server/database/` nom du projet`et entrez 
 les commandes suivantes afin de charger les presets de la base de données:
-<br/> &nbsp;&nbsp;&nbsp;&nbsp; `mongoimport -d olln -c users user.json ` 
-<br/> &nbsp;&nbsp;&nbsp;&nbsp; `mongoimport -d olln -c reports reports.json`
+    
+    `mongoimport -d olln -c users user.json ` 
+    `mongoimport -d olln -c reports reports.json`
 
 
 
 ###### 3 Lancement du serveur
 
 Se placer dans le dossier app dans un terminal grâce à la commande cd:
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;    `cd 'DirWhereYouStoredIt'/appsinf_groupeQ_2/`
+    
+    `cd 'DirWhereYouStoredIt'/appsinf_groupeQ_2/`
     
 Ensuite executer le serveur avec la commande:
-<br/> &nbsp;&nbsp;&nbsp;&nbsp;    `node server/server.js`
+
+    `node server/server.js`
 
 ###### 4 Utilisateurs preset
 
