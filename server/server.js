@@ -95,7 +95,12 @@ MongoClient.connect(dbUrl, {useUnifiedTopology: true}, (err, db)=>{
         app.get('/cookieAlert', (req,res)=>{
             req.session.cookieShow = true;
             res.redirect('/');
-        });  
+        });
+
+        //error 404 home redirect
+        app.get('/*', (req, res)=>{
+            res.redirect('/');
+        })
     }
 });
 
